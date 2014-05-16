@@ -1,3 +1,5 @@
+// source: http://paulbourke.net/fractals/rossler/
+
 class RosslerAttractor extends Attractor {
 	float paramA = 0.2;
 	float paramB = 0.2;

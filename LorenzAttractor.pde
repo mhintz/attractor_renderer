@@ -1,3 +1,5 @@
+// source: http://paulbourke.net/fractals/lorenz/
+
 class LorenzAttractor extends Attractor {
 	// parameter set 1
 /*	float paramA = 10;

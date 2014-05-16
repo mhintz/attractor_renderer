@@ -3,7 +3,9 @@ Attractor attractor;
 void setup() {
 	size(1000, 600, P3D);
 
-	attractor = new RosslerAttractor();
+//	attractor = new LorenzAttractor();
+//	attractor = new RosslerAttractor();
+	attractor = new AizawaAttractor();
 }
 
 void draw() {
