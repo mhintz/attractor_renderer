@@ -6,7 +6,7 @@ class RosslerAttractor extends Attractor {
 
 	RosslerAttractor() {
 		maxIter = 75000;
-		lastPt = new PVector(0, 0, 0);
+		lastPt = new PVector(0.0001, 0.0001, 0.0001);
 		magFactor = 20;
 		adjX = 0;
 		adjY = 0;
