@@ -12,6 +12,7 @@ class LorenzAttractor extends Attractor {
 	float scaleParam = 0.0006;
 
 	LorenzAttractor() {
+		maxIter = 40000;
 		lastPt = new PVector(0.1, 0, 0);
 		magFactor = 8;
 		adjX = 0;

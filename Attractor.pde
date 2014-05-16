@@ -9,18 +9,18 @@ class AttractorPt {
 }
 
 class Attractor {
-	int maxIter = 40000;
-	float ptRadius = 1;
+	int maxIter = 50000;
+	PVector lastPt;
 	float magFactor = 1;
 	float adjX = 0;
 	float adjY = 0;
 	float adjZ = 0;
 
 	PVector colorNoiseInd;
-	float colorStep = 0.0008;
-
-	PVector lastPt;
 	AttractorPt[] pts = {};
+
+	float colorStep = 0.0008;
+	float ptRadius = 1;
 
 	void genPts() {
 		for (int i = 0; i < maxIter; ++i) {
@@ -32,6 +32,7 @@ class Attractor {
 
 	void addPt(AttractorPt pt) { pts = (AttractorPt[]) append(pts, pt); }
 
+	// stub. This should be overridden
 	PVector nextPt() { return new PVector(); }
 
 	color nextColor() {
