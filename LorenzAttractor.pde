@@ -27,6 +27,6 @@ class LorenzAttractor extends Attractor {
 		float z = lastPt.z + scaleParam * (lastPt.x * lastPt.y - paramC * lastPt.z);
 		PVector nextPt = new PVector(x, y, z);
 		lastPt = nextPt;
-		return lastPt;
+		return nextPt;
 	}
 }

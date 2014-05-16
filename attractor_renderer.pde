@@ -1,9 +1,9 @@
-LorenzAttractor attractor;
+Attractor attractor;
 
 void setup() {
 	size(1000, 600, P3D);
 
-	attractor = new LorenzAttractor();
+	attractor = new RosslerAttractor();
 }
 
 void draw() {
