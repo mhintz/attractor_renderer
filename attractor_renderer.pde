@@ -18,7 +18,7 @@ void draw() {
 
 void keyPressed() {
 	if (key == ' ') {
-		save("frames/"+attractor.name+"-"+(System.currentTimeMillis() / 1000L)+".jpg");
+		save("frames/"+attractor.name+"-"+(System.currentTimeMillis() / 1000L)+".png"); // use unix time seconds as a uuid
 	}
 }
 
