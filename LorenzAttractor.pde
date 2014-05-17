@@ -20,7 +20,7 @@ class LorenzAttractor extends Attractor {
 		adjX = 0;
 		adjY = -20;
 		adjZ = -400;
-		colorNoiseInd = new PVector(random(10), random(10), random(10));
+		colorIndex = new PVector(random(10), random(10), random(10));
 		genPts(); // generates the points in this attractor
 	}
 
