@@ -7,11 +7,11 @@ class AizawaAttractor extends Attractor {
 	float pD = 3.5;
 	float pE = 0.25;
 	float pF = 0.1;
-	float sP = 0.01;
 
 	AizawaAttractor() {
 		maxIter = 20000;
 		lastPt = new PVector(0.1, 0, 0);
+		sP = 0.01;
 		magFactor = 160;
 		adjX = 0;
 		adjY = 0;
@@ -28,15 +28,5 @@ class AizawaAttractor extends Attractor {
 		float dy = pD * x + (z - pB) * y;
 		float dz = pC + pA * z - (Util.flCu(z) / 3) - ((Util.flSq(x) + Util.flSq(y)) * (1 + pE * z)) + pF * z * Util.flCu(x);
 		return new PVector(dx, dy, dz);
-	}
-
-	PVector nextPt() {
-		PVector delta = getDelta();
-		float x = lastPt.x + sP * delta.x;
-		float y = lastPt.y + sP * delta.y;
-		float z = lastPt.z + sP * delta.z;
-		PVector nextPt = new PVector(x, y, z);
-		lastPt = nextPt;
-		return nextPt;
 	}
 }

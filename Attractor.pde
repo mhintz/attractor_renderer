@@ -11,6 +11,7 @@ class AttractorPt {
 class Attractor {
 	int maxIter = 50000; // default number of iterations
 	PVector lastPt;
+	float sP = 1; // scale parameter
 	float magFactor = 1; // default magnification factor for points
 	float adjX = 0;
 	float adjY = 0;
@@ -33,7 +34,17 @@ class Attractor {
 	void addPt(AttractorPt pt) { pts = (AttractorPt[]) append(pts, pt); }
 
 	// stub. This should be overridden
-	PVector nextPt() { return new PVector(); }
+	PVector getDelta() { return new PVector(); }
+
+	PVector nextPt() {
+		PVector delta = getDelta();
+		float x = lastPt.x + sP * delta.x;
+		float y = lastPt.y + sP * delta.y;
+		float z = lastPt.z + sP * delta.z;
+		PVector nextPt = new PVector(x, y, z);
+		lastPt = nextPt;
+		return nextPt;
+	}
 
 	color nextColor() {
 		colorIndex.add(colorStep, colorStep, colorStep);
