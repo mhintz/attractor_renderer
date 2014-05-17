@@ -1,3 +1,5 @@
+// source: http://www.3d-meier.de/tut19/Seite8.html
+
 class ChenLeeAttractor extends Attractor {
 	float pA = 5;
 	float pB = -10;
