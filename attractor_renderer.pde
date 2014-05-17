@@ -3,12 +3,13 @@ Attractor attractor;
 void setup() {
 	size(1000, 600, P3D);
 
-//	attractor = new LorenzAttractor();
-//	attractor = new RosslerAttractor();
 //	attractor = new AizawaAttractor();
-//	attractor = new HalvorsenAttractor();
 //	attractor = new ChenLeeAttractor();
-	attractor = new QiChenAttractor();
+//	attractor = new HalvorsenAttractor();
+//	attractor = new LorenzAttractor();
+//	attractor = new QiChenAttractor();
+//	attractor = new RosslerAttractor();
+	attractor = new TSUCS2();
 }
 
 void draw() {
