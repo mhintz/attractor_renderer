@@ -5,9 +5,9 @@ class HalvorsenAttractor extends Attractor {
 	float pB = 4;
 
 	HalvorsenAttractor() {
-		maxIter = 20000;
+		maxIter = 40000;
 		lastPt = new PVector(1, 0, 0);
-		sP = 0.005;
+		sP = 0.004;
 		magFactor = 23;
 		adjX = 40;
 		adjY = 50;
