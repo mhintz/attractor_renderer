@@ -6,6 +6,7 @@ class RosslerAttractor extends Attractor {
 	float paramC = 5.7;
 
 	RosslerAttractor() {
+		name = "Rossler";
 		maxIter = 75000;
 		lastPt = new PVector(0.0001, 0.0001, 0.0001);
 		sP = 0.02;

@@ -5,6 +5,7 @@ class HalvorsenAttractor extends Attractor {
 	float pB = 4;
 
 	HalvorsenAttractor() {
+		name = "Halvorsen";
 		maxIter = 40000;
 		lastPt = new PVector(1, 0, 0);
 		sP = 0.004;

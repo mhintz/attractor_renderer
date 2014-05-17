@@ -9,6 +9,7 @@ class AizawaAttractor extends Attractor {
 	float pF = 0.1;
 
 	AizawaAttractor() {
+		name = "Aizawa";
 		maxIter = 20000;
 		lastPt = new PVector(0.1, 0, 0);
 		sP = 0.01;

@@ -15,3 +15,19 @@ void draw() {
 	background(0);
 	attractor.draw();
 }
+
+void keyPressed() {
+	if (key == ' ') {
+		save("frames/"+attractor.name+"-"+(System.currentTimeMillis() / 1000L)+".jpg");
+	}
+}
+
+static class Util {
+	public static float flSq(float n) {
+		return (float) Math.pow(n, 2);
+	}
+
+	public static float flCu(float n) {
+		return (float) Math.pow(n, 3);
+	}
+}

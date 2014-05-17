@@ -9,6 +9,7 @@ class AttractorPt {
 }
 
 class Attractor {
+	String name;
 	int maxIter = 50000; // default number of iterations
 	PVector lastPt;
 	float sP = 1; // scale parameter
@@ -73,14 +74,4 @@ class Attractor {
 		popMatrix();
 	}
 
-}
-
-static class Util {
-	public static float flSq(float n) {
-		return (float) Math.pow(n, 2);
-	}
-
-	public static float flCu(float n) {
-		return (float) Math.pow(n, 3);
-	}
 }

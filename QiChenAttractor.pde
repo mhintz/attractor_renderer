@@ -6,6 +6,7 @@ class QiChenAttractor extends Attractor {
 	float pC = 80;
 
 	QiChenAttractor() {
+		name = "Qi-Chen";
 		maxIter = 40000;
 		lastPt = new PVector(3, -4, 3);
 		sP = 0.0005;

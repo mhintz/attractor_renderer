@@ -12,6 +12,7 @@ class LorenzAttractor extends Attractor {
 	float paramC = 4;
 
 	LorenzAttractor() {
+		name = "Lorenz";
 		maxIter = 40000;
 		lastPt = new PVector(0.1, 0, 0);
 //		sP = 0.002; // goes with param set 1

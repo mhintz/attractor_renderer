@@ -6,6 +6,7 @@ class ChenLeeAttractor extends Attractor {
 	float pC = -0.38;
 
 	ChenLeeAttractor() {
+		name = "Chen-Lee";
 		maxIter = 20000;
 		lastPt = new PVector(1, 0, 4.5);
 		sP = 0.004;
