@@ -63,3 +63,13 @@ class Attractor {
 	}
 
 }
+
+static class Util {
+	public static float flSq(float n) {
+		return (float) Math.pow(n, 2);
+	}
+
+	public static float flCu(float n) {
+		return (float) Math.pow(n, 3);
+	}
+}
