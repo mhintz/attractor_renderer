@@ -26,8 +26,7 @@ class AizawaAttractor extends Attractor {
 		float z = lastPt.z;
 		float dx = (z - pB) * x - pD * y;
 		float dy = pD * x + (z - pB) * y;
-		double ddz = pC + pA * z - (Math.pow(z, 3) / 3) - ((Math.pow(x, 2) + Math.pow(y, 2)) * (1 + pE * z)) + pF * z * Math.pow(x, 3);
-		float dz = (float) ddz;
+		float dz = pC + pA * z - (Util.flCu(z) / 3) - ((Util.flSq(x) + Util.flSq(y)) * (1 + pE * z)) + pF * z * Util.flCu(x);
 		return new PVector(dx, dy, dz);
 	}
 
