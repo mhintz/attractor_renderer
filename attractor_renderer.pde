@@ -7,7 +7,8 @@ void setup() {
 //	attractor = new RosslerAttractor();
 //	attractor = new AizawaAttractor();
 //	attractor = new HalvorsenAttractor();
-	attractor = new ChenLeeAttractor();
+//	attractor = new ChenLeeAttractor();
+	attractor = new QiChenAttractor();
 }
 
 void draw() {
