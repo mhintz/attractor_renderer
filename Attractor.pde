@@ -9,14 +9,14 @@ class AttractorPt {
 }
 
 class Attractor {
-	int maxIter = 50000;
+	int maxIter = 50000; // default number of iterations
 	PVector lastPt;
-	float magFactor = 1;
+	float magFactor = 1; // default magnification factor for points
 	float adjX = 0;
 	float adjY = 0;
 	float adjZ = 0;
 
-	PVector colorNoiseInd;
+	PVector colorIndex;
 	AttractorPt[] pts = {};
 
 	float colorStep = 0.0008;
@@ -36,12 +36,15 @@ class Attractor {
 	PVector nextPt() { return new PVector(); }
 
 	color nextColor() {
-		colorNoiseInd.add(colorStep, colorStep, colorStep);
-		return color(noise(colorNoiseInd.x) * 255, noise(colorNoiseInd.y) * 255, noise(colorNoiseInd.z) * 255);
+		colorIndex.add(colorStep, colorStep, colorStep);
+		return color(convNoisePos(colorIndex.x), convNoisePos(colorIndex.y), convNoisePos(colorIndex.z));
+	}
+
+	float convNoisePos(float noiseInd) {
+		return noise(noiseInd) * 255;
 	}
 
 	void draw() {
-		fill(255);
 		noStroke();
 		translate(width / 2 + adjX, height / 2 + adjY, 0);
 		rotateY(sin(radians(frameCount * 2)) * PI / 2);
