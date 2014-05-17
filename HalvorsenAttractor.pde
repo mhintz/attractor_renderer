@@ -1,3 +1,5 @@
+// source: http://www.3d-meier.de/tut19/Seite13.html
+
 class HalvorsenAttractor extends Attractor {
 	float pA = 1.4;
 	float pB = 4;
