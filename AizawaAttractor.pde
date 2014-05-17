@@ -1,30 +1,42 @@
 // source: http://www.behance.net/gallery/MathRules-Strange-Attractors/7618879
 
 class AizawaAttractor extends Attractor {
-	float paramA = 0.25;
-	float paramB = 0.95;
-	float paramC = 0.6;
-	float paramD = 3.5;
-	float paramE = 0.7;
-	float paramF = 0.1;
-	float scaleParam = 0.06;
+	float pA = 0.95;
+	float pB = 0.7;
+	float pC = 0.6;
+	float pD = 3.5;
+	float pE = 0.25;
+	float pF = 0.1;
+	float sP = 0.01;
 
 	AizawaAttractor() {
-		maxIter = 40000;
-		lastPt = new PVector(0.1, 0.1, 0.1);
-		magFactor = 200;
+		maxIter = 20000;
+		lastPt = new PVector(0.1, 0, 0);
+		magFactor = 160;
 		adjX = 0;
 		adjY = 0;
-		adjZ = 0;
-		colorNoiseInd = new PVector(random(10), random(10), random(10));
+		adjZ = -100;
+		colorIndex = new PVector(random(10), random(10), random(10));
 		genPts(); // generates the points in this attractor
 	}
 
+	PVector getDelta() {
+		float x = lastPt.x;
+		float y = lastPt.y;
+		float z = lastPt.z;
+		float dx = (z - pB) * x - pD * y;
+		float dy = pD * x + (z - pB) * y;
+		double ddz = pC + pA * z - (Math.pow(z, 3) / 3) - ((Math.pow(x, 2) + Math.pow(y, 2)) * (1 + pE * z)) + pF * z * Math.pow(x, 3);
+		float dz = (float) ddz;
+		return new PVector(dx, dy, dz);
+	}
+
 	PVector nextPt() {
-		float x = lastPt.x + scaleParam * ((lastPt.z - paramE) * lastPt.x - (paramD * lastPt.x + (lastPt.z - paramE) * lastPt.y));
-		float y = lastPt.y + scaleParam * (paramD * lastPt.x + (lastPt.z - paramE) * lastPt.y);
-		double z = lastPt.z + scaleParam * (paramC + paramB * lastPt.z - (Math.pow(lastPt.z, 3) / 3) - ((Math.pow(lastPt.x, 2) + Math.pow(lastPt.y, 2)) * (1 + paramA * lastPt.z)) + paramF * lastPt.z * Math.pow(lastPt.x, 3));
-		PVector nextPt = new PVector(x, y, (float) z);
+		PVector delta = getDelta();
+		float x = lastPt.x + sP * delta.x;
+		float y = lastPt.y + sP * delta.y;
+		float z = lastPt.z + sP * delta.z;
+		PVector nextPt = new PVector(x, y, z);
 		lastPt = nextPt;
 		return nextPt;
 	}
