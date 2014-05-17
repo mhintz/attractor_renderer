@@ -4,7 +4,7 @@ class RosslerAttractor extends Attractor {
 	float paramA = 0.2;
 	float paramB = 0.2;
 	float paramC = 5.7;
-	float scaleParam = 0.04;
+	float scaleParam = 0.02;
 
 	RosslerAttractor() {
 		maxIter = 75000;
@@ -13,7 +13,7 @@ class RosslerAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = -500;
-		colorNoiseInd = new PVector(random(10), random(10), random(10));
+		colorIndex = new PVector(random(10), random(10), random(10));
 		genPts(); // generates the points in this attractor
 	}
 
