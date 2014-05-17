@@ -5,7 +5,8 @@ void setup() {
 
 //	attractor = new LorenzAttractor();
 //	attractor = new RosslerAttractor();
-	attractor = new AizawaAttractor();
+//	attractor = new AizawaAttractor();
+	attractor = new HalvorsenAttractor();
 }
 
 void draw() {
