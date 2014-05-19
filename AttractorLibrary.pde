@@ -132,6 +132,35 @@ class HalvorsenAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite46.html
+class LiuChenAttractor extends Attractor {
+	float pA = 2.4;
+	float pB = -3.78;
+	float pC = 14;
+	float pD = -11;
+	float pE = 4;
+	float pF = 5.58;
+	float pG = -1;
+
+	LiuChenAttractor() {
+		name = "Liu-Chen";
+		maxIter = 40000;
+		lastPt = new PVector(1, 3, 5);
+		sP = 0.001;
+		magFactor = 12;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 0;
+	}
+
+	PVector getDelta() {
+		float dx = pA * lastPt.y + pB * lastPt.x + pC * lastPt.y * lastPt.z;
+		float dy = pD * lastPt.y - lastPt.z + pE * lastPt.x * lastPt.z;
+		float dz = pF * lastPt.z + pG * lastPt.x * lastPt.y;
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://paulbourke.net/fractals/lorenz/
 class LorenzAttractor extends Attractor {
 	// parameter set 1

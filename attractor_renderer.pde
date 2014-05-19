@@ -9,8 +9,9 @@ void setup() {
 //	attractor = new ChenLeeAttractor();
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
+	attractor = new LiuChenAttractor();
 //	attractor = new LorenzAttractor();
-	attractor = new LuChenAttractor();
+//	attractor = new LuChenAttractor();
 //	attractor = new NoseHooverAttractor();
 //	attractor = new QiChenAttractor();
 //	attractor = new RayleighBenardAttractor();
