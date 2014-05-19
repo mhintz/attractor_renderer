@@ -176,14 +176,14 @@ class RosslerAttractor extends Attractor {
 }
 
 // source: http://chaoticatmospheres.com/125670/1204030/gallery/mathrules-strange-attractors
-class TSUCS extends Attractor {
+class TSUCS1 extends Attractor {
 	float pA = 40;
 	float pB = 0.833;
 	float pC = 0.5;
 	float pD = 0.65;
 	float pE = 20;
 
-	TSUCS() {
+	TSUCS1() {
 		name = "Three_Scroll_Unified_Chaotic_System";
 		maxIter = 50000;
 		lastPt = new PVector(0.1, 1.0, -0.1);
