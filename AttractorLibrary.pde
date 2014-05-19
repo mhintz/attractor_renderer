@@ -16,8 +16,6 @@ class AizawaAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = -100;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts(); // generates the points in this attractor
 	}
 
 	PVector getDelta() {
@@ -46,8 +44,6 @@ class ChenLeeAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = 0;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {
@@ -74,8 +70,6 @@ class HadleyAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = -100;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {
@@ -100,8 +94,6 @@ class HalvorsenAttractor extends Attractor {
 		adjX = 40;
 		adjY = 50;
 		adjZ = -100;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {
@@ -137,8 +129,6 @@ class LorenzAttractor extends Attractor {
 		adjX = 0;
 		adjY = -20;
 		adjZ = -400;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts(); // generates the points in this attractor
 	}
 
 	PVector getDelta() {
@@ -162,8 +152,6 @@ class NoseHooverAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = 0;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {
@@ -189,8 +177,6 @@ class QiChenAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = -50;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {
@@ -216,8 +202,6 @@ class RayleighBenardAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = 0;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {
@@ -243,8 +227,6 @@ class RosslerAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = -500;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts(); // generates the points in this attractor
 	}
 
 	PVector getDelta() {
@@ -268,8 +250,6 @@ class ThomasAttractor extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = 0;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {
@@ -297,8 +277,6 @@ class TSUCS1 extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = 300;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {
@@ -327,8 +305,6 @@ class TSUCS2 extends Attractor {
 		adjX = 0;
 		adjY = 0;
 		adjZ = 200;
-		colorIndex = new PVector(random(10), random(10), random(10));
-		genPts();
 	}
 
 	PVector getDelta() {

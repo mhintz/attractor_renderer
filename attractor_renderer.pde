@@ -3,18 +3,21 @@ Attractor attractor;
 void setup() {
 	size(1000, 700, P3D);
 
-//	attractor = new AizawaAttractor();
+/* attractor options */
+	attractor = new AizawaAttractor();
 //	attractor = new ChenLeeAttractor();
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
 //	attractor = new LorenzAttractor();
 //	attractor = new NoseHooverAttractor();
 //	attractor = new QiChenAttractor();
-	attractor = new RayleighBenardAttractor();
+//	attractor = new RayleighBenardAttractor();
 //	attractor = new RosslerAttractor();
 //	attractor = new ThomasAttractor();
 //	attractor = new TSUCS1();
 //	attractor = new TSUCS2();
+
+	attractor.genPts(); // should always be called on initialization but only after the derived class constructor
 }
 
 void draw() {

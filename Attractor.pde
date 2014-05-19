@@ -26,6 +26,10 @@ class Attractor {
 	float colorStep = 0.0008;
 	float ptRadius = 1;
 
+	Attractor() {
+		colorIndex = new PVector(random(10), random(10), random(10));
+	}
+
 	void genPts() {
 		minPt = lastPt.get();
 		maxPt = lastPt.get();
