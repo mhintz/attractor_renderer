@@ -175,6 +175,7 @@ class RosslerAttractor extends Attractor {
 	}
 }
 
+// source: http://chaoticatmospheres.com/125670/1204030/gallery/mathrules-strange-attractors
 class TSUCS extends Attractor {
 	float pA = 40;
 	float pB = 0.833;
