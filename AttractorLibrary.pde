@@ -26,7 +26,7 @@ class AizawaAttractor extends Attractor {
 		float z = lastPt.z;
 		float dx = (z - pB) * x - pD * y;
 		float dy = pD * x + (z - pB) * y;
-		float dz = pC + pA * z - (Util.flCu(z) / 3) - ((Util.flSq(x) + Util.flSq(y)) * (1 + pE * z)) + pF * z * Util.flCu(x);
+		float dz = pC + pA * z - (flCu(z) / 3) - ((flSq(x) + flSq(y)) * (1 + pE * z)) + pF * z * flCu(x);
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -80,9 +80,9 @@ class HalvorsenAttractor extends Attractor {
 		float x = lastPt.x;
 		float y = lastPt.y;
 		float z = lastPt.z;
-		float dx = - pA * x - pB * y - pB * z - Util.flSq(y);
-		float dy = - pA * y - pB * z - pB * x - Util.flSq(z);
-		float dz = - pA * z - pB * x - pB * y - Util.flSq(x); 
+		float dx = - pA * x - pB * y - pB * z - flSq(y);
+		float dy = - pA * y - pB * z - pB * x - flSq(z);
+		float dz = - pA * z - pB * x - pB * y - flSq(x); 
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -186,13 +186,13 @@ class TSUCS2 extends Attractor {
 
 	TSUCS2() {
 		name = "Three_Scroll_Unified_Chaotic_System_2";
-		maxIter = 40000;
+		maxIter = 50000;
 		lastPt = new PVector(0.1, 1.0, -0.1);
-		sP = 0.01;
+		sP = 0.0005;
 		magFactor = 0.5;
 		adjX = 0;
 		adjY = 0;
-		adjZ = -500;
+		adjZ = 200;
 		colorIndex = new PVector(random(10), random(10), random(10));
 		genPts();
 	}
@@ -200,7 +200,7 @@ class TSUCS2 extends Attractor {
 	PVector getDelta() {
 		float dx = pA * (lastPt.y - lastPt.x) + pD * lastPt.x * lastPt.z;
 		float dy = pB * lastPt.x - lastPt.x * lastPt.z + pF * lastPt.y;
-		float dz = pC * lastPt.z + lastPt.x * lastPt.y - pE * Util.flSq(lastPt.x);
+		float dz = pC * lastPt.z + lastPt.x * lastPt.y - pE * flSq(lastPt.x);
 		return new PVector(dx, dy, dz);
 	}
 }
