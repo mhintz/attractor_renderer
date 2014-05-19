@@ -1,16 +1,17 @@
 Attractor attractor;
 
 void setup() {
-	size(1000, 600, P3D);
+	size(1000, 700, P3D);
 
 //	attractor = new AizawaAttractor();
 //	attractor = new ChenLeeAttractor();
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
 //	attractor = new LorenzAttractor();
+	attractor = new NoseHooverAttractor();
 //	attractor = new QiChenAttractor();
 //	attractor = new RosslerAttractor();
-	attractor = new ThomasAttractor();
+//	attractor = new ThomasAttractor();
 //	attractor = new TSUCS1();
 //	attractor = new TSUCS2();
 }

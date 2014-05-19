@@ -149,6 +149,30 @@ class LorenzAttractor extends Attractor {
 	}
 }
 
+class NoseHooverAttractor extends Attractor {
+	float pA = 1.5;
+
+	NoseHooverAttractor() {
+		name = "Nose-Hoover";
+		maxIter = 40000;
+		lastPt = new PVector(1, 0, 0);
+		sP = 0.009;
+		magFactor = 58;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 0;
+		colorIndex = new PVector(random(10), random(10), random(10));
+		genPts();
+	}
+
+	PVector getDelta() {
+		float dx = lastPt.y;
+		float dy = -lastPt.x + lastPt.y * lastPt.z;
+		float dz = pA - flSq(lastPt.y);
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://www.3d-meier.de/tut19/Seite83.html
 class QiChenAttractor extends Attractor {
 	float pA = 38;
