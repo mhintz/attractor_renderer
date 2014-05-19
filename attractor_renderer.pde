@@ -9,7 +9,8 @@ void setup() {
 //	attractor = new LorenzAttractor();
 //	attractor = new QiChenAttractor();
 //	attractor = new RosslerAttractor();
-	attractor = new TSUCS2();
+	attractor = new TSUCS();
+//	attractor = new TSUCS2();
 }
 
 void draw() {

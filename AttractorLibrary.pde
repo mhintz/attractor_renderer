@@ -175,6 +175,34 @@ class RosslerAttractor extends Attractor {
 	}
 }
 
+class TSUCS extends Attractor {
+	float pA = 40;
+	float pB = 0.833;
+	float pC = 0.5;
+	float pD = 0.65;
+	float pE = 20;
+
+	TSUCS() {
+		name = "Three_Scroll_Unified_Chaotic_System";
+		maxIter = 50000;
+		lastPt = new PVector(0.1, 1.0, -0.1);
+		sP = 0.0005;
+		magFactor = 0.5;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 300;
+		colorIndex = new PVector(random(10), random(10), random(10));
+		genPts();
+	}
+
+	PVector getDelta() {
+		float dx = pA * (lastPt.y - lastPt.x) + pC * lastPt.x * lastPt.z;
+		float dy = pE * lastPt.y - lastPt.x * lastPt.z;
+		float dz = pB * lastPt.z + lastPt.x * lastPt.y - pD * flSq(lastPt.x);
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://chaoticatmospheres.com/125670/1204030/gallery/mathrules-strange-attractors
 class TSUCS2 extends Attractor {
 	float pA = 40;
