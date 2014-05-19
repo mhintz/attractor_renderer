@@ -29,6 +29,31 @@ class AizawaAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite7.html
+class ChenCelikovskyAttractor extends Attractor {
+	float pA = 36;
+	float pB = 3;
+	float pC = 20;
+
+	ChenCelikovskyAttractor() {
+		name = "Chen-Celikovsky";
+		maxIter = 40000;
+		lastPt = new PVector(1, 1, 1);
+		sP = 0.002;
+		magFactor = 8;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 0;
+	}
+
+	PVector getDelta() {
+		float dx = pA * (lastPt.y - lastPt.x);
+		float dy = -lastPt.x * lastPt.z + pC * lastPt.y;
+		float dz = lastPt.x * lastPt.y - pB * lastPt.z;
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://www.3d-meier.de/tut19/Seite8.html
 class ChenLeeAttractor extends Attractor {
 	float pA = 5;

@@ -4,7 +4,8 @@ void setup() {
 	size(1000, 700, P3D);
 
 /* attractor options */
-	attractor = new AizawaAttractor();
+//	attractor = new AizawaAttractor();
+	attractor = new ChenCelikovskyAttractor();
 //	attractor = new ChenLeeAttractor();
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
