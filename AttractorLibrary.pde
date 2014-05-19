@@ -58,6 +58,34 @@ class ChenLeeAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite12.html
+class HadleyAttractor extends Attractor {
+	float pA = 0.2;
+	float pB = 4;
+	float pF = 8;
+	float pG = 1;
+
+	HadleyAttractor() {
+		name = "Hadley";
+		maxIter = 40000;
+		lastPt = new PVector(0.1, 0, 0);
+		sP = 0.005;
+		magFactor = 125;
+		adjX = 0;
+		adjY = 0;
+		adjZ = -100;
+		colorIndex = new PVector(random(10), random(10), random(10));
+		genPts();
+	}
+
+	PVector getDelta() {
+		float dx = -flSq(lastPt.y) - flSq(lastPt.z) - pA * lastPt.x + pA * pF;
+		float dy = lastPt.x * lastPt.y - pB * lastPt.x * lastPt.z - lastPt.y + pG;
+		float dz = pB * lastPt.x * lastPt.y + lastPt.x * lastPt.z - lastPt.z;
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://www.3d-meier.de/tut19/Seite13.html
 class HalvorsenAttractor extends Attractor {
 	float pA = 1.4;
@@ -156,7 +184,7 @@ class RosslerAttractor extends Attractor {
 
 	RosslerAttractor() {
 		name = "Rossler";
-		maxIter = 75000;
+		maxIter = 50000;
 		lastPt = new PVector(0.0001, 0.0001, 0.0001);
 		sP = 0.02;
 		magFactor = 20;
