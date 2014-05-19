@@ -5,7 +5,7 @@ void setup() {
 
 /* attractor options */
 //	attractor = new AizawaAttractor();
-	attractor = new ChenCelikovskyAttractor();
+//	attractor = new ChenCelikovskyAttractor();
 //	attractor = new ChenLeeAttractor();
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
@@ -17,6 +17,7 @@ void setup() {
 //	attractor = new ThomasAttractor();
 //	attractor = new TSUCS1();
 //	attractor = new TSUCS2();
+	attractor = new ZhouChenAttractor();
 
 	attractor.genPts(); // should always be called on initialization but only after the derived class constructor
 }

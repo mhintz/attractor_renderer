@@ -339,3 +339,29 @@ class TSUCS2 extends Attractor {
 		return new PVector(dx, dy, dz);
 	}
 }
+
+class ZhouChenAttractor extends Attractor {
+	float pA = 2.97;
+	float pB = 0.15;
+	float pC = -3;
+	float pD = 1;
+	float pE = -8.78;
+
+	ZhouChenAttractor() {
+		name = "Zhou-Chen";
+		maxIter	= 50000;
+		lastPt = new PVector(3, 1, 1);
+		sP = 0.002;
+		magFactor = 6;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 0;
+	}
+
+	PVector getDelta() {
+		float dx = pA * lastPt.x + pB * lastPt.y + lastPt.y * lastPt.z;
+		float dy = pC * lastPt.y - lastPt.x * lastPt.z + pD * lastPt.y * lastPt.z;
+		float dz = pE * lastPt.z - lastPt.x * lastPt.y;
+		return new PVector(dx, dy, dz);
+	}
+}
