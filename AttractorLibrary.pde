@@ -241,6 +241,43 @@ class NoseHooverAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite70.html (set 1)
+// http://www.nahee.com/spanky/www/fractint/pickover.html (set 2)
+
+class PickoverAttractor extends Attractor {
+	// param set 1
+	float pA = -0.759;
+	float pB = 2.449;
+	float pC = 1.253;
+	float pD = 1.5;
+
+	// param set 2
+	/*float pA = 2.24;
+	float pB = 0.43;
+	float pC = -0.65;
+	float pD = -2.43;*/
+
+	PickoverAttractor() {
+		name = "Pickover";
+		maxIter = 20000;
+		lastPt = new PVector(0, 0, 0);
+		sP = 1;
+		magFactor = 500; // param set 1
+//		magFactor = 150; // param set 2
+		adjX = 0;
+		adjY = 250; // param set 1
+//		adjY = 0; // param set 2
+		adjZ = 0;
+	}
+
+	PVector getDelta() {
+		float dx = (float) (Math.sin(pA  * lastPt.y) - lastPt.z * Math.cos(pB * lastPt.x) - lastPt.x);
+		float dy = (float) (lastPt.z * Math.sin(pC * lastPt.x) - Math.cos(pD * lastPt.y) - lastPt.y);
+		float dz = (float) (Math.sin(lastPt.x) - lastPt.z);
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://www.3d-meier.de/tut19/Seite83.html
 class QiChenAttractor extends Attractor {
 	float pA = 38;
