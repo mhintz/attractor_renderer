@@ -164,6 +164,31 @@ class LorenzAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite81.html
+class LuChenAttractor extends Attractor {
+	float pA = -10;
+	float pB = -4;
+	float pC = 18.1;
+
+	LuChenAttractor() {
+		name = "Lu-Chen";
+		maxIter = 40000;
+		lastPt = new PVector(0, 0, 2);
+		sP = 0.01;
+		magFactor = 10;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 0;
+	}
+
+	PVector getDelta() {
+		float dx = -(pA * pB * lastPt.x) / (pA + pB) - lastPt.y * lastPt.z + pC;
+		float dy = pA * lastPt.y + lastPt.x * lastPt.z;
+		float dz = pB * lastPt.z + lastPt.x * lastPt.y;
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://www.3d-meier.de/tut19/Seite15.html
 class NoseHooverAttractor extends Attractor {
 	float pA = 1.5;
@@ -340,6 +365,7 @@ class TSUCS2 extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite127.html
 class ZhouChenAttractor extends Attractor {
 	float pA = 2.97;
 	float pB = 0.15;

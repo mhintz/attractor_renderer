@@ -10,6 +10,7 @@ void setup() {
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
 //	attractor = new LorenzAttractor();
+	attractor = new LuChenAttractor();
 //	attractor = new NoseHooverAttractor();
 //	attractor = new QiChenAttractor();
 //	attractor = new RayleighBenardAttractor();
@@ -17,7 +18,7 @@ void setup() {
 //	attractor = new ThomasAttractor();
 //	attractor = new TSUCS1();
 //	attractor = new TSUCS2();
-	attractor = new ZhouChenAttractor();
+//	attractor = new ZhouChenAttractor();
 
 	attractor.genPts(); // should always be called on initialization but only after the derived class constructor
 }
