@@ -20,14 +20,20 @@ class Attractor {
 
 	PVector colorIndex;
 	AttractorPt[] pts = {};
+	PVector minPt;
+	PVector maxPt;
 
 	float colorStep = 0.0008;
 	float ptRadius = 1;
 
 	void genPts() {
+		minPt = lastPt.get();
+		maxPt = lastPt.get();
+		PVector pos;
 		for (int i = 0; i < maxIter; ++i) {
-			PVector pos = nextPt();
+			pos = nextPt();
 			color col = nextColor();
+			setMinMax(minPt, maxPt, pos);
 			addPt(new AttractorPt(pos, col));
 		}
 	}
@@ -42,6 +48,9 @@ class Attractor {
 		float x = lastPt.x + sP * delta.x;
 		float y = lastPt.y + sP * delta.y;
 		float z = lastPt.z + sP * delta.z;
+		if (x == Float.NaN || y == Float.NaN || z == Float.NaN) {
+			println(x, y, z);
+		}
 		PVector nextPt = new PVector(x, y, z);
 		lastPt = nextPt;
 		return nextPt;
@@ -54,6 +63,11 @@ class Attractor {
 
 	float convNoisePos(float noiseInd) {
 		return noise(noiseInd) * 255;
+	}
+
+	void setMinMax(PVector min, PVector max, PVector pt) {
+		calcVecMin(min, pt);
+		calcVecMax(max, pt);
 	}
 
 	void draw() {
