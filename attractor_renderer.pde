@@ -8,8 +8,9 @@ void setup() {
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
 //	attractor = new LorenzAttractor();
-	attractor = new NoseHooverAttractor();
+//	attractor = new NoseHooverAttractor();
 //	attractor = new QiChenAttractor();
+	attractor = new RayleighBenardAttractor();
 //	attractor = new RosslerAttractor();
 //	attractor = new ThomasAttractor();
 //	attractor = new TSUCS1();

@@ -149,6 +149,7 @@ class LorenzAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite15.html
 class NoseHooverAttractor extends Attractor {
 	float pA = 1.5;
 
@@ -200,6 +201,33 @@ class QiChenAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite16.html
+class RayleighBenardAttractor extends Attractor {
+	float pA = 9;
+	float pR = 12;
+	float pB = 5;
+
+	RayleighBenardAttractor() {
+		name = "Rayleigh-Benard";
+		maxIter = 40000;
+		lastPt = new PVector(0.1, 0, 0);
+		sP = 0.05;
+		magFactor = 17;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 0;
+		colorIndex = new PVector(random(10), random(10), random(10));
+		genPts();
+	}
+
+	PVector getDelta() {
+		float dx = -pA * lastPt.x + pA * lastPt.y;
+		float dy = pR * lastPt.x - lastPt.y - lastPt.x * lastPt.z;
+		float dz = lastPt.x * lastPt.y - pB * lastPt.z;
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://paulbourke.net/fractals/rossler/
 class RosslerAttractor extends Attractor {
 	float paramA = 0.2;
@@ -227,6 +255,7 @@ class RosslerAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite41.html
 class ThomasAttractor extends Attractor {
 	float pB = 0.19;
 
