@@ -203,6 +203,30 @@ class RosslerAttractor extends Attractor {
 	}
 }
 
+class ThomasAttractor extends Attractor {
+	float pB = 0.19;
+
+	ThomasAttractor() {
+		name = "Thomas";
+		maxIter = 50000;
+		lastPt = new PVector(0.1, 0, 0);
+		sP = 0.05;
+		magFactor = 62;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 0;
+		colorIndex = new PVector(random(10), random(10), random(10));
+		genPts();
+	}
+
+	PVector getDelta() {
+		float dx = -pB * lastPt.x + (float) Math.sin(lastPt.y);
+		float dy = -pB * lastPt.y + (float) Math.sin(lastPt.z);
+		float dz = -pB * lastPt.z + (float) Math.sin(lastPt.x);
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://chaoticatmospheres.com/125670/1204030/gallery/mathrules-strange-attractors
 class TSUCS1 extends Attractor {
 	float pA = 40;

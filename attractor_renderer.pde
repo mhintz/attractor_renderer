@@ -5,11 +5,12 @@ void setup() {
 
 //	attractor = new AizawaAttractor();
 //	attractor = new ChenLeeAttractor();
-	attractor = new HadleyAttractor();
+//	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
 //	attractor = new LorenzAttractor();
 //	attractor = new QiChenAttractor();
 //	attractor = new RosslerAttractor();
+	attractor = new ThomasAttractor();
 //	attractor = new TSUCS1();
 //	attractor = new TSUCS2();
 }
