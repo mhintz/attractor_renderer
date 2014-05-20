@@ -29,6 +29,28 @@ class AizawaAttractor extends Attractor {
 	}
 }
 
+// source: http://www.3d-meier.de/tut19/Seite5.html
+class BoualiAttractor extends Attractor {
+	float pA = 0.3;
+	float pS = 1;
+
+	BoualiAttractor() {
+		name = "Bouali";
+		maxIter = 40000;
+		lastPt = new PVector(1, 0.1, 0.1);
+		sP = 0.006;
+		magFactor = 33;
+		adjY = -300;
+	}
+
+	PVector getDelta() {
+		float dx = lastPt.x * (4 - lastPt.y) + pA * lastPt.z;
+		float dy = - lastPt.y * (1 - flSq(lastPt.x));
+		float dz = - lastPt.x * (1.5 - pS * lastPt.z) - 0.05 * lastPt.z;
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://www.3d-meier.de/tut19/Seite7.html
 class ChenCelikovskyAttractor extends Attractor {
 	float pA = 36;
