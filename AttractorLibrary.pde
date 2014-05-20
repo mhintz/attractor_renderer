@@ -364,10 +364,10 @@ class RosslerAttractor extends Attractor {
 		maxIter = 50000;
 		lastPt = new PVector(0.0001, 0.0001, 0.0001);
 		sP = 0.02;
-		magFactor = 20;
+		magFactor = 18;
 		adjX = 0;
 		adjY = 0;
-		adjZ = -500;
+		adjZ = -100;
 	}
 
 	PVector getDelta() {
