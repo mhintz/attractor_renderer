@@ -41,9 +41,6 @@ class ChenCelikovskyAttractor extends Attractor {
 		lastPt = new PVector(1, 1, 1);
 		sP = 0.002;
 		magFactor = 8;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -66,9 +63,6 @@ class ChenLeeAttractor extends Attractor {
 		lastPt = new PVector(1, 0, 4.5);
 		sP = 0.004;
 		magFactor = 12;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -145,9 +139,6 @@ class IkedaAttractor extends Attractor {
 		lastPt = new PVector(0, 0, 0);
 		sP = 0.04;
 		magFactor = 0.5;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -174,9 +165,6 @@ class LiuChenAttractor extends Attractor {
 		lastPt = new PVector(1, 3, 5);
 		sP = 0.001;
 		magFactor = 12;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -231,9 +219,6 @@ class LuChenAttractor extends Attractor {
 		lastPt = new PVector(0, 0, 2);
 		sP = 0.01;
 		magFactor = 10;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -254,9 +239,6 @@ class NoseHooverAttractor extends Attractor {
 		lastPt = new PVector(1, 0, 0);
 		sP = 0.009;
 		magFactor = 58;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -340,9 +322,6 @@ class RayleighBenardAttractor extends Attractor {
 		lastPt = new PVector(0.1, 0, 0);
 		sP = 0.05;
 		magFactor = 17;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -388,9 +367,6 @@ class ThomasAttractor extends Attractor {
 		lastPt = new PVector(0.1, 0, 0);
 		sP = 0.05;
 		magFactor = 62;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -415,9 +391,6 @@ class TSUCS1 extends Attractor {
 		lastPt = new PVector(0.1, 1.0, -0.1);
 		sP = 0.0005;
 		magFactor = 3.5;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -443,9 +416,6 @@ class TSUCS2 extends Attractor {
 		lastPt = new PVector(0.1, 1.0, -0.1);
 		sP = 0.0005;
 		magFactor = 1.5;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -470,9 +440,6 @@ class ZhouChenAttractor extends Attractor {
 		lastPt = new PVector(3, 1, 1);
 		sP = 0.002;
 		magFactor = 6;
-		adjX = 0;
-		adjY = 0;
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
