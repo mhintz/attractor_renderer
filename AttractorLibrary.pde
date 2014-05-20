@@ -414,10 +414,10 @@ class TSUCS1 extends Attractor {
 		maxIter = 50000;
 		lastPt = new PVector(0.1, 1.0, -0.1);
 		sP = 0.0005;
-		magFactor = 0.5;
+		magFactor = 3.5;
 		adjX = 0;
 		adjY = 0;
-		adjZ = 300;
+		adjZ = 0;
 	}
 
 	PVector getDelta() {
