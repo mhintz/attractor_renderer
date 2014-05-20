@@ -132,6 +132,32 @@ class HalvorsenAttractor extends Attractor {
 	}
 }
 
+// source: http://jlswbs.blogspot.com/2012/03/ikeda.html
+class IkedaAttractor extends Attractor {
+	float pA = 1;
+	float pB = 0.9;
+	float pC = 0.4;
+	float pD = 6;
+
+	IkedaAttractor() {
+		name = "Ikeda";
+		maxIter = 50000;
+		lastPt = new PVector(0, 0, 0);
+		sP = 0.04;
+		magFactor = 0.5;
+		adjX = 0;
+		adjY = 0;
+		adjZ = 0;
+	}
+
+	PVector getDelta() {
+		float dx = pA + pB * (lastPt.x * flCos(lastPt.z) - lastPt.y * flSin(lastPt.z));
+		float dy = pB * (lastPt.x * flSin(lastPt.z) + lastPt.y * flCos(lastPt.z));
+		float dz = pC - pD / (1 + flSq(lastPt.x) + flSq(lastPt.y));
+		return new PVector(dx, dy, dz);
+	}
+}
+
 // source: http://www.3d-meier.de/tut19/Seite46.html
 class LiuChenAttractor extends Attractor {
 	float pA = 2.4;
@@ -243,7 +269,6 @@ class NoseHooverAttractor extends Attractor {
 
 // source: http://www.3d-meier.de/tut19/Seite70.html (set 1)
 // http://www.nahee.com/spanky/www/fractint/pickover.html (set 2)
-
 class PickoverAttractor extends Attractor {
 	// param set 1
 	float pA = -0.759;
@@ -271,9 +296,9 @@ class PickoverAttractor extends Attractor {
 	}
 
 	PVector getDelta() {
-		float dx = (float) (Math.sin(pA  * lastPt.y) - lastPt.z * Math.cos(pB * lastPt.x) - lastPt.x);
-		float dy = (float) (lastPt.z * Math.sin(pC * lastPt.x) - Math.cos(pD * lastPt.y) - lastPt.y);
-		float dz = (float) (Math.sin(lastPt.x) - lastPt.z);
+		float dx = flSin(pA  * lastPt.y) - lastPt.z * flCos(pB * lastPt.x) - lastPt.x;
+		float dy = lastPt.z * flSin(pC * lastPt.x) - flCos(pD * lastPt.y) - lastPt.y;
+		float dz = flSin(lastPt.x) - lastPt.z;
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -369,9 +394,9 @@ class ThomasAttractor extends Attractor {
 	}
 
 	PVector getDelta() {
-		float dx = -pB * lastPt.x + (float) Math.sin(lastPt.y);
-		float dy = -pB * lastPt.y + (float) Math.sin(lastPt.z);
-		float dz = -pB * lastPt.z + (float) Math.sin(lastPt.x);
+		float dx = -pB * lastPt.x + flSin(lastPt.y);
+		float dy = -pB * lastPt.y + flSin(lastPt.z);
+		float dz = -pB * lastPt.z + flSin(lastPt.x);
 		return new PVector(dx, dy, dz);
 	}
 }

@@ -9,11 +9,12 @@ void setup() {
 //	attractor = new ChenLeeAttractor();
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
+	attractor = new IkedaAttractor();
 //	attractor = new LiuChenAttractor();
 //	attractor = new LorenzAttractor();
 //	attractor = new LuChenAttractor();
 //	attractor = new NoseHooverAttractor();
-	attractor = new PickoverAttractor();
+//	attractor = new PickoverAttractor();
 //	attractor = new QiChenAttractor();
 //	attractor = new RayleighBenardAttractor();
 //	attractor = new RosslerAttractor();
@@ -34,6 +35,14 @@ void keyPressed() {
 	if (key == ' ') {
 		save("frames/"+attractor.name+"-"+(System.currentTimeMillis() / 1000L)+".png"); // use unix time seconds as a uuid
 	}
+}
+
+static float flSin(float n) {
+	return (float) Math.sin(n);
+}
+
+static float flCos(float n) {
+	return (float) Math.cos(n);
 }
 
 static float flSq(float n) {
