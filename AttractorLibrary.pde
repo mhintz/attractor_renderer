@@ -9,7 +9,7 @@ class AizawaAttractor extends Attractor {
 
 	AizawaAttractor() {
 		name = "Aizawa";
-		maxIter = 20000;
+		maxIter = 40000;
 		lastPt = new PVector(0.1, 0, 0);
 		sP = 0.01;
 		magFactor = 160;
@@ -410,7 +410,7 @@ class TSUCS1 extends Attractor {
 	float pE = 20;
 
 	TSUCS1() {
-		name = "Three_Scroll_Unified_Chaotic_System";
+		name = "Three_Scroll_Unified_Chaotic_System_1";
 		maxIter = 50000;
 		lastPt = new PVector(0.1, 1.0, -0.1);
 		sP = 0.0005;
