@@ -260,7 +260,7 @@ class NoseHooverAttractor extends Attractor {
 		maxIter = 40000;
 		lastPt = new PVector(1, 0, 0);
 		sP = 0.009;
-		magFactor = 58;
+		magFactor = 80;
 	}
 
 	PVector getDelta() {

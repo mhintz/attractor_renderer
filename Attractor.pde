@@ -31,6 +31,7 @@ class Attractor {
 	}
 
 	void genPts() {
+		pts = new AttractorPt[maxIter];
 		minPt = lastPt.get();
 		maxPt = lastPt.get();
 		PVector pos;
@@ -38,7 +39,7 @@ class Attractor {
 			pos = nextPt();
 			color col = nextColor();
 			setMinMax(minPt, maxPt, pos);
-			addPt(new AttractorPt(pos, col));
+			pts[i] = new AttractorPt(pos, col);
 		}
 	}
 
@@ -76,12 +77,14 @@ class Attractor {
 
 	void draw() {
 		noStroke();
+		pushMatrix();
 		translate(width / 2 + adjX, height / 2 + adjY, 0);
 		rotateY(sin(radians(frameCount * 2)) * PI / 2);
 		translate(0, 0, adjZ); // I think doing this after the rotation helps
 		for (int i = 100, l = pts.length; i < l; ++i) {
 			drawPt(pts[i]);
 		}
+		popMatrix();
 	}
 
 	void drawPt(AttractorPt pt) {
