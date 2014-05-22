@@ -13,9 +13,6 @@ class AizawaAttractor extends Attractor {
 		lastPt = new PVector(0.1, 0, 0);
 		sP = 0.01;
 		magFactor = 160;
-		adjX = 0;
-		adjY = 0;
-		adjZ = -100;
 	}
 
 	PVector getDelta() {
@@ -108,9 +105,6 @@ class HadleyAttractor extends Attractor {
 		lastPt = new PVector(0.1, 0, 0);
 		sP = 0.005;
 		magFactor = 125;
-		adjX = 0;
-		adjY = 0;
-		adjZ = -100;
 	}
 
 	PVector getDelta() {
@@ -134,7 +128,6 @@ class HalvorsenAttractor extends Attractor {
 		magFactor = 23;
 		adjX = 40;
 		adjY = 50;
-		adjZ = -100;
 	}
 
 	PVector getDelta() {
@@ -215,10 +208,8 @@ class LorenzAttractor extends Attractor {
 		lastPt = new PVector(0.1, 0, 0);
 //		sP = 0.002; // goes with param set 1
 		sP = 0.0006; // goes with param set 2
-		magFactor = 8;
-		adjX = 0;
+		magFactor = 4;
 		adjY = -20;
-		adjZ = -400;
 	}
 
 	PVector getDelta() {
@@ -293,10 +284,8 @@ class PickoverAttractor extends Attractor {
 		sP = 1;
 		magFactor = 500; // param set 1
 //		magFactor = 150; // param set 2
-		adjX = 0;
 		adjY = 250; // param set 1
 //		adjY = 0; // param set 2
-		adjZ = 0;
 	}
 
 	PVector getDelta() {
@@ -319,9 +308,6 @@ class QiChenAttractor extends Attractor {
 		lastPt = new PVector(3, -4, 3);
 		sP = 0.0005;
 		magFactor = 2;
-		adjX = 0;
-		adjY = 0;
-		adjZ = -50;
 	}
 
 	PVector getDelta() {
@@ -366,9 +352,6 @@ class RosslerAttractor extends Attractor {
 		lastPt = new PVector(0.0001, 0.0001, 0.0001);
 		sP = 0.02;
 		magFactor = 18;
-		adjX = 0;
-		adjY = 0;
-		adjZ = -100;
 	}
 
 	PVector getDelta() {

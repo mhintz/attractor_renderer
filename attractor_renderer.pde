@@ -5,14 +5,14 @@ void setup() {
 
 /* attractor options */
 //	attractor = new AizawaAttractor();
-	attractor = new BoualiAttractor();
+//	attractor = new BoualiAttractor();
 //	attractor = new ChenCelikovskyAttractor();
 //	attractor = new ChenLeeAttractor();
 //	attractor = new HadleyAttractor();
 //	attractor = new HalvorsenAttractor();
 //	attractor = new IkedaAttractor();
 //	attractor = new LiuChenAttractor();
-//	attractor = new LorenzAttractor();
+	attractor = new LorenzAttractor();
 //	attractor = new LuChenAttractor();
 //	attractor = new NoseHooverAttractor();
 //	attractor = new PickoverAttractor();
