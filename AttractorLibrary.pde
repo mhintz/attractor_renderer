@@ -12,7 +12,7 @@ class AizawaAttractor extends Attractor {
 		maxIter = 40000;
 		lastPt = new PVector(0.1, 0, 0);
 		sP = 0.01;
-		magFactor = 160;
+		magFactor = 200;
 	}
 
 	PVector getDelta() {
@@ -21,7 +21,7 @@ class AizawaAttractor extends Attractor {
 		float z = lastPt.z;
 		float dx = (z - pB) * x - pD * y;
 		float dy = pD * x + (z - pB) * y;
-		float dz = pC + pA * z - (flCu(z) / 3) - ((flSq(x) + flSq(y)) * (1 + pE * z)) + pF * z * flCu(x);
+		float dz = pC + pA * z - (util.flCu(z) / 3) - ((util.flSq(x) + util.flSq(y)) * (1 + pE * z)) + pF * z * util.flCu(x);
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -42,7 +42,7 @@ class BoualiAttractor extends Attractor {
 
 	PVector getDelta() {
 		float dx = lastPt.x * (4 - lastPt.y) + pA * lastPt.z;
-		float dy = - lastPt.y * (1 - flSq(lastPt.x));
+		float dy = - lastPt.y * (1 - util.flSq(lastPt.x));
 		float dz = - lastPt.x * (1.5 - pS * lastPt.z) - 0.05 * lastPt.z;
 		return new PVector(dx, dy, dz);
 	}
@@ -108,7 +108,7 @@ class HadleyAttractor extends Attractor {
 	}
 
 	PVector getDelta() {
-		float dx = -flSq(lastPt.y) - flSq(lastPt.z) - pA * lastPt.x + pA * pF;
+		float dx = -util.flSq(lastPt.y) - util.flSq(lastPt.z) - pA * lastPt.x + pA * pF;
 		float dy = lastPt.x * lastPt.y - pB * lastPt.x * lastPt.z - lastPt.y + pG;
 		float dz = pB * lastPt.x * lastPt.y + lastPt.x * lastPt.z - lastPt.z;
 		return new PVector(dx, dy, dz);
@@ -134,9 +134,9 @@ class HalvorsenAttractor extends Attractor {
 		float x = lastPt.x;
 		float y = lastPt.y;
 		float z = lastPt.z;
-		float dx = - pA * x - pB * y - pB * z - flSq(y);
-		float dy = - pA * y - pB * z - pB * x - flSq(z);
-		float dz = - pA * z - pB * x - pB * y - flSq(x); 
+		float dx = - pA * x - pB * y - pB * z - util.flSq(y);
+		float dy = - pA * y - pB * z - pB * x - util.flSq(z);
+		float dz = - pA * z - pB * x - pB * y - util.flSq(x); 
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -157,9 +157,9 @@ class IkedaAttractor extends Attractor {
 	}
 
 	PVector getDelta() {
-		float dx = pA + pB * (lastPt.x * flCos(lastPt.z) - lastPt.y * flSin(lastPt.z));
-		float dy = pB * (lastPt.x * flSin(lastPt.z) + lastPt.y * flCos(lastPt.z));
-		float dz = pC - pD / (1 + flSq(lastPt.x) + flSq(lastPt.y));
+		float dx = pA + pB * (lastPt.x * util.flCos(lastPt.z) - lastPt.y * util.flSin(lastPt.z));
+		float dy = pB * (lastPt.x * util.flSin(lastPt.z) + lastPt.y * util.flCos(lastPt.z));
+		float dz = pC - pD / (1 + util.flSq(lastPt.x) + util.flSq(lastPt.y));
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -257,7 +257,7 @@ class NoseHooverAttractor extends Attractor {
 	PVector getDelta() {
 		float dx = lastPt.y;
 		float dy = -lastPt.x + lastPt.y * lastPt.z;
-		float dz = pA - flSq(lastPt.y);
+		float dz = pA - util.flSq(lastPt.y);
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -289,9 +289,9 @@ class PickoverAttractor extends Attractor {
 	}
 
 	PVector getDelta() {
-		float dx = flSin(pA  * lastPt.y) - lastPt.z * flCos(pB * lastPt.x) - lastPt.x;
-		float dy = lastPt.z * flSin(pC * lastPt.x) - flCos(pD * lastPt.y) - lastPt.y;
-		float dz = flSin(lastPt.x) - lastPt.z;
+		float dx = util.flSin(pA  * lastPt.y) - lastPt.z * util.flCos(pB * lastPt.x) - lastPt.x;
+		float dy = lastPt.z * util.flSin(pC * lastPt.x) - util.flCos(pD * lastPt.y) - lastPt.y;
+		float dz = util.flSin(lastPt.x) - lastPt.z;
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -371,13 +371,13 @@ class ThomasAttractor extends Attractor {
 		maxIter = 50000;
 		lastPt = new PVector(0.1, 0, 0);
 		sP = 0.05;
-		magFactor = 62;
+		magFactor = 80;
 	}
 
 	PVector getDelta() {
-		float dx = -pB * lastPt.x + flSin(lastPt.y);
-		float dy = -pB * lastPt.y + flSin(lastPt.z);
-		float dz = -pB * lastPt.z + flSin(lastPt.x);
+		float dx = -pB * lastPt.x + util.flSin(lastPt.y);
+		float dy = -pB * lastPt.y + util.flSin(lastPt.z);
+		float dz = -pB * lastPt.z + util.flSin(lastPt.x);
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -401,7 +401,7 @@ class TSUCS1 extends Attractor {
 	PVector getDelta() {
 		float dx = pA * (lastPt.y - lastPt.x) + pC * lastPt.x * lastPt.z;
 		float dy = pE * lastPt.y - lastPt.x * lastPt.z;
-		float dz = pB * lastPt.z + lastPt.x * lastPt.y - pD * flSq(lastPt.x);
+		float dz = pB * lastPt.z + lastPt.x * lastPt.y - pD * util.flSq(lastPt.x);
 		return new PVector(dx, dy, dz);
 	}
 }
@@ -426,7 +426,7 @@ class TSUCS2 extends Attractor {
 	PVector getDelta() {
 		float dx = pA * (lastPt.y - lastPt.x) + pD * lastPt.x * lastPt.z;
 		float dy = pB * lastPt.x - lastPt.x * lastPt.z + pF * lastPt.y;
-		float dz = pC * lastPt.z + lastPt.x * lastPt.y - pE * flSq(lastPt.x);
+		float dz = pC * lastPt.z + lastPt.x * lastPt.y - pE * util.flSq(lastPt.x);
 		return new PVector(dx, dy, dz);
 	}
 }

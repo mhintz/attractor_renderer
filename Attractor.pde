@@ -43,19 +43,14 @@ class Attractor {
 		}
 	}
 
-	void addPt(AttractorPt pt) { pts = (AttractorPt[]) append(pts, pt); }
-
 	// stub. This should be overridden
-	PVector getDelta() { return new PVector(); }
+	PVector getDelta() { return new PVector(0, 0, 0); }
 
 	PVector nextPt() {
 		PVector delta = getDelta();
 		float x = lastPt.x + sP * delta.x;
 		float y = lastPt.y + sP * delta.y;
 		float z = lastPt.z + sP * delta.z;
-		if (x == Float.NaN || y == Float.NaN || z == Float.NaN) {
-			println(x, y, z);
-		}
 		PVector nextPt = new PVector(x, y, z);
 		lastPt = nextPt;
 		return nextPt;
@@ -71,8 +66,8 @@ class Attractor {
 	}
 
 	void setMinMax(PVector min, PVector max, PVector pt) {
-		calcVecMin(min, pt);
-		calcVecMax(max, pt);
+		util.calcVecMin(min, pt);
+		util.calcVecMax(max, pt);
 	}
 
 	void draw() {
@@ -81,7 +76,7 @@ class Attractor {
 		translate(width / 2 + adjX, height / 2 + adjY, 0);
 		rotateY(sin(radians(frameCount * 2)) * PI / 2);
 		translate(0, 0, adjZ); // I think doing this after the rotation helps
-		for (int i = 100, l = pts.length; i < l; ++i) {
+		for (int i = 0, l = pts.length; i < l; ++i) {
 			drawPt(pts[i]);
 		}
 		popMatrix();

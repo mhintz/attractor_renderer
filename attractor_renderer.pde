@@ -1,50 +1,21 @@
 import controlP5.*; // GUI library
 
+MathUtil util;
+
+AttractorManager mainAttractorManager;
+
 ControlP5 cp5;
 DropdownList attractorList;
-
-Attractor attractor;
-
-AttractorType[] attractorNames = { AttractorType.AIZAWA, AttractorType.BOUALI, AttractorType.CHENCELIKOVSKY, AttractorType.CHENLEE, AttractorType.HADLEY, AttractorType.HALVORSEN, AttractorType.IKEDA, AttractorType.LIUCHEN, AttractorType.LORENZ, AttractorType.LUCHEN, AttractorType.NOSEHOOVER, AttractorType.PICKOVER, AttractorType.QICHEN, AttractorType.RAYLEIGHBENARD, AttractorType.ROSSLER, AttractorType.THOMAS, AttractorType.TSUCS1, AttractorType.TSUCS2, AttractorType.ZHOUCHEN };
-
-Attractor makeAttractor(AttractorType type) {
-	Attractor attractor = null;
-	switch (type) {
-		case AIZAWA: attractor = new AizawaAttractor(); break;
-		case BOUALI: attractor = new BoualiAttractor(); break;
-		case CHENCELIKOVSKY: attractor = new ChenCelikovskyAttractor(); break;
-		case CHENLEE: attractor = new ChenLeeAttractor(); break;
-		case HADLEY: attractor = new HadleyAttractor(); break;
-		case HALVORSEN: attractor = new HalvorsenAttractor(); break;
-		case IKEDA: attractor = new IkedaAttractor(); break;
-		case LIUCHEN: attractor = new LiuChenAttractor(); break;
-		case LORENZ: attractor = new LorenzAttractor(); break;
-		case LUCHEN: attractor = new LuChenAttractor(); break;
-		case NOSEHOOVER: attractor = new NoseHooverAttractor(); break;
-		case PICKOVER: attractor = new PickoverAttractor(); break;
-		case QICHEN: attractor = new QiChenAttractor(); break;
-		case RAYLEIGHBENARD: attractor = new RayleighBenardAttractor(); break;
-		case ROSSLER: attractor = new RosslerAttractor(); break;
-		case THOMAS: attractor = new ThomasAttractor(); break;
-		case TSUCS1: attractor = new TSUCS1(); break;
-		case TSUCS2: attractor = new TSUCS2(); break;
-		case ZHOUCHEN: attractor = new ZhouChenAttractor(); break;
-	}
-	return attractor;
-}
-
-void setupAttractor(AttractorType newType) {
-	attractor = makeAttractor(newType);
-	attractor.genPts(); // should always be called on initialization but only after the derived class constructor
-}
 
 void setup() {
 	size(displayWidth, displayHeight, P3D);
 
-	cp5 = new ControlP5(this);
-	attractorList = setupAttractorList(cp5.addDropdownList("attractorList"));
+	util = new MathUtil();
 
-	setupAttractor(AttractorType.NOSEHOOVER);
+	mainAttractorManager = new AttractorManager();
+
+	cp5 = new ControlP5(this);
+	attractorList = configureAttractorList(cp5.addDropdownList("attractorList"), mainAttractorManager.getAvailableAttractors());
 }
 
 boolean sketchFullScreen() {
@@ -53,55 +24,32 @@ boolean sketchFullScreen() {
 
 void draw() {
 	background(0);
-	attractor.draw();
+	mainAttractorManager.draw();
 }
 
 void keyPressed() {
 	if (key == ' ') {
-		save("frames/"+attractor.name+"-"+(System.currentTimeMillis() / 1000L)+".png"); // use unix time seconds as a uuid
+		mainAttractorManager.saveFrame();
 	}
 }
 
 void controlEvent(ControlEvent evt) {
+	int attNum = 0;
 	if (evt.isGroup()) {
-		println("group: ", evt.getGroup().getValue());
+		attNum = (int) evt.getGroup().getValue();
 	} else if (evt.isController()) {
-		println("controller: ", evt.getController().getValue());
+		attNum = (int) evt.getController().getValue();
 	}
+	mainAttractorManager.setupAttractor(attNum);
 }
 
-DropdownList setupAttractorList(DropdownList newList) {
+DropdownList configureAttractorList(DropdownList newList, String[] listItems) {
 	newList.setPosition(20, 20);
-	newList.setSize(300, 60);
-	newList.
+	newList.setItemHeight(18);
+	newList.setBarHeight(18);
+	newList.captionLabel().style().marginTop = 4;
+	newList.valueLabel().style().marginTop = 4;
+	newList.setSize(300, 20 * (listItems.length + 1)); // add one to account for label
+	newList.addItems(listItems);
 	return newList;
-}
-
-// utils
-static float flSin(float n) {
-	return (float) Math.sin(n);
-}
-
-static float flCos(float n) {
-	return (float) Math.cos(n);
-}
-
-static float flSq(float n) {
-	return (float) Math.pow(n, 2);
-}
-
-static float flCu(float n) {
-	return (float) Math.pow(n, 3);
-}
-
-static void calcVecMax(PVector store, PVector pt) {
-	store.x = Math.max(store.x, pt.x);
-	store.y = Math.max(store.y, pt.y);
-	store.z = Math.max(store.z, pt.z);
-}
-
-static void calcVecMin(PVector store, PVector pt) {
-	store.x = Math.min(store.x, pt.x);
-	store.y = Math.min(store.y, pt.y);
-	store.z = Math.min(store.z, pt.z);
 }
