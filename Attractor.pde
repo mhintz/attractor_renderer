@@ -10,6 +10,7 @@ class AttractorPt {
 
 class Attractor {
 	String name;
+	boolean is3D = true;
 	int maxIter = 50000; // default number of iterations
 	PVector lastPt;
 	float sP = 1; // scale parameter
@@ -74,7 +75,7 @@ class Attractor {
 		noStroke();
 		pushMatrix();
 		translate(width / 2 + adjX, height / 2 + adjY, 0);
-		rotateY(sin(radians(frameCount * 2)) * PI / 2);
+		if (is3D) rotateY(sin(radians(frameCount * 2)) * PI / 2);
 		translate(0, 0, adjZ); // I think doing this after the rotation helps
 		for (int i = 0, l = pts.length; i < l; ++i) {
 			drawPt(pts[i]);
@@ -88,6 +89,15 @@ class Attractor {
 		fill(pt.col);
 		box(ptRadius, ptRadius, ptRadius);
 		popMatrix();
+	}
+
+	/* default of these functions does nothing */
+	boolean genNewParams(float x, float y) {
+		return false;
+	}
+
+	boolean genNewParams(float a, float b, float c, float d) {
+		return false;
 	}
 
 }

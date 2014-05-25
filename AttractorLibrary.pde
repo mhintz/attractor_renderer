@@ -92,6 +92,48 @@ class ChenLeeAttractor extends Attractor {
 	}
 }
 
+class CliffordAttractor extends Attractor {
+	float pA = -1.4;
+	float pB = 1.6;
+	float pC = 1;
+	float pD = 0.7;
+
+	CliffordAttractor() {
+		name = "Clifford";
+		maxIter = 40000;
+		lastPt = new PVector(0.1, 0.1);
+		sP = 1;
+		magFactor = 175;
+		is3D = false;
+	}
+
+	PVector getDelta() {
+		float dx = util.flSin(pA * lastPt.y) + pC * util.flCos(pA * lastPt.x) - lastPt.x;
+		float dy = util.flSin(pB * lastPt.x) + pD * util.flCos(pB * lastPt.y) - lastPt.y;
+		return new PVector(dx, dy);
+	}
+
+	void draw() {
+		super.draw();
+
+		// add parameter label
+		fill(255);
+		textSize(14);
+		text("A: "+util.roundTo(pA, 4), width - 100, 20);
+		text("B: "+util.roundTo(pB, 4), width - 100, 40);
+		text("C: "+util.roundTo(pC, 4), width - 100, 60);
+		text("D: "+util.roundTo(pD, 4), width - 100, 80);
+	}
+
+	boolean genNewParams(float a, float b, float c, float d) {
+		pA += a;
+		pB += b;
+		pC += c;
+		pD += d;
+		return true;
+	}
+}
+
 // source: http://www.3d-meier.de/tut19/Seite12.html
 class HadleyAttractor extends Attractor {
 	float pA = 0.2;

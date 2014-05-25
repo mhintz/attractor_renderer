@@ -27,4 +27,15 @@ class MathUtil {
 		store.y = Math.min(store.y, pt.y);
 		store.z = Math.min(store.z, pt.z);
 	}
+
+	float roundTo(float n, int places) {
+		return round(n * pow(10, places)) / pow(10, places);
+	}
+
+	float noiseIndex = random(20);
+
+	float noiseRandom(float min, float max) {
+		noiseIndex += 0.1;
+		return min + (noise(noiseIndex) * (max - min));
+	}
 }
