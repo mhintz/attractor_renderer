@@ -44,7 +44,7 @@ class Attractor {
 		}
 	}
 
-	// stub. This should be overridden
+	// stub, should be overridden
 	PVector getDelta() { return new PVector(0, 0, 0); }
 
 	PVector nextPt() {
@@ -71,6 +71,9 @@ class Attractor {
 		util.calcVecMax(max, pt);
 	}
 
+	// in case any update logic needs to be run between frames
+	void update() { }
+
 	void draw() {
 		noStroke();
 		pushMatrix();
@@ -91,12 +94,23 @@ class Attractor {
 		popMatrix();
 	}
 
-	/* default of these functions does nothing */
-	boolean genNewParams(float x, float y) {
-		return false;
+	// stub, should be overridden
+	String[] getParamsDisplay() { return new String[0]; }
+
+	void drawParams() {
+		// add parameter labels
+		fill(255);
+		textSize(14);
+		int xPos = width - 100;
+		int yOff = 20;
+		String[] dispParams = getParamsDisplay();
+		for (int i = 0, len = dispParams.length; i < len; ++i) {
+			text(dispParams[i], xPos, yOff * (i + 1));
+		}
 	}
 
-	boolean genNewParams(float a, float b, float c, float d) {
+	/* default parameter update does nothing */
+	boolean updateParam(int paramNum, float inc) {
 		return false;
 	}
 

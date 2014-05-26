@@ -97,6 +97,7 @@ class CliffordAttractor extends Attractor {
 	float pB = 1.6;
 	float pC = 1;
 	float pD = 0.7;
+	NoiseVector nVec;
 
 	CliffordAttractor() {
 		name = "Clifford";
@@ -105,6 +106,8 @@ class CliffordAttractor extends Attractor {
 		sP = 1;
 		magFactor = 175;
 		is3D = false;
+		float[][] rangesCandD = {{-5, 5}, {-5, 5}};
+		nVec = new NoiseVector(rangesCandD);
 	}
 
 	PVector getDelta() {
@@ -113,23 +116,23 @@ class CliffordAttractor extends Attractor {
 		return new PVector(dx, dy);
 	}
 
-	void draw() {
-		super.draw();
-
-		// add parameter label
-		fill(255);
-		textSize(14);
-		text("A: "+util.roundTo(pA, 4), width - 100, 20);
-		text("B: "+util.roundTo(pB, 4), width - 100, 40);
-		text("C: "+util.roundTo(pC, 4), width - 100, 60);
-		text("D: "+util.roundTo(pD, 4), width - 100, 80);
+	void update() {
+		float[] update = nVec.getNext();
+		pC = update[0];
+		pD = update[1];
+		genPts();
 	}
 
-	boolean genNewParams(float a, float b, float c, float d) {
-		pA += a;
-		pB += b;
-		pC += c;
-		pD += d;
+	String[] getParamsDisplay() {
+		String[] paramsDisp = {"A: "+util.roundTo(pA, 4), "B: "+util.roundTo(pB, 4), "C: "+util.roundTo(pC, 4), "D: "+util.roundTo(pD, 4)};
+		return paramsDisp;
+	}
+
+	boolean updateParam(int num, float inc) {
+		switch (num) {
+			case 0: pA += inc; break;
+			case 1: pB += inc; break;
+		}
 		return true;
 	}
 }

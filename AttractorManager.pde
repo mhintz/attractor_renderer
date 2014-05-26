@@ -7,18 +7,18 @@ class AttractorManager {
 		mainAttractor.genPts();
 	}
 
+	void update() {
+		mainAttractor.update();
+	}
+
 	void draw() {
 		mainAttractor.draw();
+		mainAttractor.drawParams();
 	}
 
-	void setAttractorParams(float x, float y) {
-		boolean resetParams = mainAttractor.genNewParams(x, y); 
+	void updateAttractorParam(int paramNum, float inc) {
+		boolean resetParams = mainAttractor.updateParam(paramNum, inc);
 		// genNewParams should return true if new params are generated
-		if (resetParams) mainAttractor.genPts();
-	}
-
-	void setAttractorParams(float a, float b, float c, float d) {
-		boolean resetParams = mainAttractor.genNewParams(a, b, c, d);
 		if (resetParams) mainAttractor.genPts();
 	}
 

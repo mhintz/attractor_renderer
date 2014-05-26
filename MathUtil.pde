@@ -39,3 +39,30 @@ class MathUtil {
 		return min + (noise(noiseIndex) * (max - min));
 	}
 }
+
+class NoiseVector {
+	float inc = 0.01;
+	float[][] ranges;
+	float[] indexes;
+
+	NoiseVector(float[][] cRanges) {
+		ranges = cRanges;
+		indexes = new float[ranges.length];
+		for (int i = 0, len = ranges.length; i < len; ++i) {
+			indexes[i] = random(20);
+		}
+	}
+
+	float[] getNext() {
+		float[] values = new float[ranges.length];
+		for (int i = 0, len = ranges.length; i < len; ++i) {
+			indexes[i] += inc;
+			values[i] = valFromRng(indexes[i], ranges[i]);
+		}
+		return values;
+	}
+
+	float valFromRng(float ind, float[] rng) {
+		return rng[0] + noise(ind) * (rng[1] - rng[0]);
+	}
+}

@@ -2,40 +2,47 @@ import controlP5.*; // GUI library
 
 MathUtil util;
 
+KeyManager mainKeyManager;
 AttractorManager mainAttractorManager;
-KeyHandler mainKeyManager;
 
 ControlP5 cp5;
 DropdownList attractorList;
 
 void setup() {
-//	size(displayWidth, displayHeight, P3D);
-	size(500, 500, P3D);
+	size(displayWidth, displayHeight, P3D);
+//	size(500, 500, P3D);
 
 	util = new MathUtil();
 
+	mainKeyManager = new KeyManager();
 	mainAttractorManager = new AttractorManager();
-
-	mainKeyManager = new KeyHandler();
 
 	cp5 = new ControlP5(this);
 	attractorList = configureAttractorList(cp5.addDropdownList("attractorList"), mainAttractorManager.getAvailableAttractors());
 
+	// optional initial attractor
 	mainAttractorManager.setupAttractor(4);
+	attractorList.setIndex(4);
 }
 
 boolean sketchFullScreen() {
-//	return true;
-	return false;
+	return true;
+//	return false;
+}
+
+void update() {
+	mainKeyManager.update();
+	mainAttractorManager.update();
 }
 
 void draw() {
+	update();
+
 	background(0);
-	mainKeyManager.update();
 	mainAttractorManager.draw();
 }
 
-class KeyHandler {
+class KeyManager {
 	boolean w = false;
 	boolean s = false;
 	boolean d = false;
@@ -50,95 +57,69 @@ class KeyHandler {
 	boolean control = false;
 
 	void update() {
-		// calculate parameter multiplication factor
-		float baseInc = 0.01;
+		float baseInc = 0.1;
 		float multFactor = 1;
-		if (shift) {
-			multFactor = 100;
-		} else if (option) {
-			multFactor = 10;
-		} else if (control) {
-			multFactor = 0.1;
-		}
-		// command key suite (pairs are exclusive of each other - the negative increment only works if the positive increment is false)
-		if (w) {
-			mainAttractorManager.setAttractorParams(baseInc * multFactor, 0, 0, 0);
-		} else if (s) {
-			mainAttractorManager.setAttractorParams(-baseInc * multFactor, 0, 0, 0);
-		}
-		if (d) {
-			mainAttractorManager.setAttractorParams(0, baseInc * multFactor, 0, 0);
-		} else if (a) {
-			mainAttractorManager.setAttractorParams(0, -baseInc * multFactor, 0, 0);
-		}
-		if (up) {
-			mainAttractorManager.setAttractorParams(0, 0, baseInc * multFactor, 0);
-		} else if (down) {
-			mainAttractorManager.setAttractorParams(0, 0, -baseInc * multFactor, 0);
-		}
-		if (right) {
-			mainAttractorManager.setAttractorParams(0, 0, 0, baseInc * multFactor);
-		} else if (left) {
-			mainAttractorManager.setAttractorParams(0, 0, 0, -baseInc * multFactor);
-		}
-	}
-}
 
-void keyReleased() {
-	switch (keyCode) {
-		// 'w'
-		case 87: mainKeyManager.w = false; break;
-		// 's'
-		case 83: mainKeyManager.s = false; break;
-		// 'd'
-		case 68: mainKeyManager.d = false; break;
-		// 'a'
-		case 65: mainKeyManager.a = false; break;
-		// up arrow
-		case 38: mainKeyManager.up = false; break;
-		// down arrow
-		case 40: mainKeyManager.down = false; break;
-		// right arrow
-		case 39: mainKeyManager.right = false; break;
-		// left arrow
-		case 37: mainKeyManager.left = false; break;
-		// shift key
-		case 16: mainKeyManager.shift = false; break;
-		// option key
-		case 18: mainKeyManager.option = false; break;
-		// control key
-		case 17: mainKeyManager.control = false; break;
+		// calculate parameter multiplication factor
+		if (shift) {
+			multFactor = 10;
+		} else if (option) {
+			multFactor = 0.1;
+		} else if (control) {
+			multFactor = 0.01;
+		}
+
+		float inc = baseInc * multFactor;
+		// command key suite (pairs are exclusive of each other - the negative increment only works if the positive increment is false)
+		if (w) mainAttractorManager.updateAttractorParam(0, inc);
+		if (s && !w) mainAttractorManager.updateAttractorParam(0, -inc);
+		if (d) mainAttractorManager.updateAttractorParam(1, inc);
+		if (a && !d) mainAttractorManager.updateAttractorParam(1, -inc);
+		if (up) mainAttractorManager.updateAttractorParam(2, inc);
+		if (down && !up) mainAttractorManager.updateAttractorParam(2, -inc);
+		if (right) mainAttractorManager.updateAttractorParam(3, inc);
+		if (left && !right) mainAttractorManager.updateAttractorParam(3, -inc);
 	}
 }
 
 void keyPressed() {
+	toggleInputKey(true);
+}
+
+void keyReleased() {
+	toggleInputKey(false);
+}
+
+void toggleInputKey(boolean toggle) {
 	switch (keyCode) {
 		// spacebar
 		case 32:
-			mainAttractorManager.saveFrame();
+			if (toggle) {
+				mainAttractorManager.saveFrame();
+			}
 			break;
 		// 'w'
-		case 87: mainKeyManager.w = true; break;
+		case 87: mainKeyManager.w = toggle; break;
 		// 's'
-		case 83: mainKeyManager.s = true; break;
+		case 83: mainKeyManager.s = toggle; break;
 		// 'd'
-		case 68: mainKeyManager.d = true; break;
+		case 68: mainKeyManager.d = toggle; break;
 		// 'a'
-		case 65: mainKeyManager.a = true; break;
+		case 65: mainKeyManager.a = toggle; break;
 		// up arrow
-		case 38: mainKeyManager.up = true; break;
+		case 38: mainKeyManager.up = toggle; break;
 		// down arrow
-		case 40: mainKeyManager.down = true; break;
+		case 40: mainKeyManager.down = toggle; break;
 		// right arrow
-		case 39: mainKeyManager.right = true; break;
+		case 39: mainKeyManager.right = toggle; break;
 		// left arrow
-		case 37: mainKeyManager.left = true; break;
+		case 37: mainKeyManager.left = toggle; break;
 		// shift key
-		case 16: mainKeyManager.shift = true; break;
+		case 16: mainKeyManager.shift = toggle; break;
 		// option key
-		case 18: mainKeyManager.option = true; break;
+		case 18: mainKeyManager.option = toggle; break;
 		// control key
-		case 17: mainKeyManager.control = true; break;
+		case 17: mainKeyManager.control = toggle; break;
 	}
 }
 
