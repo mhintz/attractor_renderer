@@ -92,51 +92,6 @@ class ChenLeeAttractor extends Attractor {
 	}
 }
 
-class CliffordAttractor extends Attractor {
-	float pA = -1.4;
-	float pB = 1.6;
-	float pC = 1;
-	float pD = 0.7;
-	NoiseVector nVec;
-
-	CliffordAttractor() {
-		name = "Clifford";
-		maxIter = 40000;
-		lastPt = new PVector(0.1, 0.1);
-		sP = 1;
-		magFactor = 175;
-		is3D = false;
-		float[][] rangesCandD = {{-5, 5}, {-5, 5}};
-		nVec = new NoiseVector(rangesCandD);
-	}
-
-	PVector getDelta() {
-		float dx = util.flSin(pA * lastPt.y) + pC * util.flCos(pA * lastPt.x) - lastPt.x;
-		float dy = util.flSin(pB * lastPt.x) + pD * util.flCos(pB * lastPt.y) - lastPt.y;
-		return new PVector(dx, dy);
-	}
-
-	void update() {
-		float[] update = nVec.getNext();
-		pC = update[0];
-		pD = update[1];
-		genPts();
-	}
-
-	String[] getParamsDisplay() {
-		String[] paramsDisp = {"A: "+util.roundTo(pA, 4), "B: "+util.roundTo(pB, 4), "C: "+util.roundTo(pC, 4), "D: "+util.roundTo(pD, 4)};
-		return paramsDisp;
-	}
-
-	boolean updateParam(int num, float inc) {
-		switch (num) {
-			case 0: pA += inc; break;
-			case 1: pB += inc; break;
-		}
-		return true;
-	}
-}
-
 // source: http://www.3d-meier.de/tut19/Seite12.html
 class HadleyAttractor extends Attractor {
 	float pA = 0.2;

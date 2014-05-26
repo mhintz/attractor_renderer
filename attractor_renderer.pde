@@ -19,10 +19,6 @@ void setup() {
 
 	cp5 = new ControlP5(this);
 	attractorList = configureAttractorList(cp5.addDropdownList("attractorList"), mainAttractorManager.getAvailableAttractors());
-
-	// optional initial attractor
-	mainAttractorManager.setupAttractor(4);
-	attractorList.setIndex(4);
 }
 
 boolean sketchFullScreen() {
@@ -30,14 +26,7 @@ boolean sketchFullScreen() {
 //	return false;
 }
 
-void update() {
-	mainKeyManager.update();
-	mainAttractorManager.update();
-}
-
 void draw() {
-	update();
-
 	background(0);
 	mainAttractorManager.draw();
 }
@@ -56,30 +45,7 @@ class KeyManager {
 	boolean option = false;
 	boolean control = false;
 
-	void update() {
-		float baseInc = 0.1;
-		float multFactor = 1;
-
-		// calculate parameter multiplication factor
-		if (shift) {
-			multFactor = 10;
-		} else if (option) {
-			multFactor = 0.1;
-		} else if (control) {
-			multFactor = 0.01;
-		}
-
-		float inc = baseInc * multFactor;
-		// command key suite (pairs are exclusive of each other - the negative increment only works if the positive increment is false)
-		if (w) mainAttractorManager.updateAttractorParam(0, inc);
-		if (s && !w) mainAttractorManager.updateAttractorParam(0, -inc);
-		if (d) mainAttractorManager.updateAttractorParam(1, inc);
-		if (a && !d) mainAttractorManager.updateAttractorParam(1, -inc);
-		if (up) mainAttractorManager.updateAttractorParam(2, inc);
-		if (down && !up) mainAttractorManager.updateAttractorParam(2, -inc);
-		if (right) mainAttractorManager.updateAttractorParam(3, inc);
-		if (left && !right) mainAttractorManager.updateAttractorParam(3, -inc);
-	}
+	void update() { /* this version of the attractor renderer doesn't update based on key input */}
 }
 
 void keyPressed() {
