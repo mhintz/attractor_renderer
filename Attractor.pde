@@ -23,7 +23,7 @@ class Attractor {
 	PVector minPt;
 	PVector maxPt;
 
-	float colorStep = 0.0008;
+	float colorStep = 0.00008;
 	float ptRadius = 1;
 
 	Attractor() {
